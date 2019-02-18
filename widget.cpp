@@ -87,11 +87,11 @@ void Widget::initializeGL(){
 
     m_TransformObjects.append(m_groups[2]);
 
-    //m_objects.append(new ObjectEngine3D);
-    //m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/1984_Kenworth_K_100_Mark_Truck/untitled.obj");
+    m_objects.append(new ObjectEngine3D);
+    m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/1984_Kenworth_K_100_Mark_Truck/untitled.obj");
     //m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/my_cub/initCube.obj");
 
-    initCube(2.0f,2.0f,2.0f,&DM,&NM);
+    //initCube(2.0f,2.0f,2.0f,&DM,&NM);
     m_TransformObjects.append(m_objects[m_objects.size() - 1]);
 
     QImage tDM(":/cube.jpg");
@@ -345,11 +345,9 @@ void Widget::initCube(float width, float heigth, float depth,QImage *pathDiffuse
     newMtl->setAmbientceColor(QVector3D(1.0,1.0,1.0));
     newMtl->setSpecularColor(QVector3D(1.0,1.0,1.0));
 
-
     ObjectEngine3D *newObj = new ObjectEngine3D;
     newObj->calculateTBN(vertexes);
     newObj->addObject(new SimpleObject3D(vertexes,indexes, newMtl));
-
 
     m_objects.append(newObj); // QImage(":/brick.jpg"))); //":/cube.jpg"
 }
