@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\widget.o
+./release\simpleobject3d.o
+./release\group3d.o
+./release\camera3d.o
+./release\skybox.o
+./release\material.o
+./release\materiallibrary.o
+./release\objectengine3d.o
+./release\qrc_shaders.o
+./release\qrc_textures.o
+./release\qrc_model.o
+./release\moc_widget.o
+);

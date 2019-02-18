@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>model/cat/cat.mtl</file>
+        <file>model/cat/cat.obj</file>
+        <file>model/cat/cat_diff.tga</file>
+        <file>model/cat/cat_norm.tga</file>
+        <file>model/cat/cat_spec.tga</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/untitled.mtl</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/untitled.obj</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0012.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0013.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0014.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0016.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0017.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0018.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0019.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0020.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0021.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0022.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0023.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0024.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0025.dds</file>
+        <file>model/1984_Kenworth_K_100_Mark_Truck/textures/texture_0027.dds</file>
+        <file>model/car/Car.mtl</file>
+        <file>model/car/Car.obj</file>
+        <file>model/car/diff.jpg</file>
+        <file>model/car/diff.png</file>
+        <file>model/car/diff_NRM.jpg</file>
+        <file>model/car/diff_NRM.png</file>
+        <file>model/car/skyxn.jpg</file>
+        <file>model/car/carmini.mtl</file>
+        <file>model/car/carmini.obj</file>
+        <file>model/cube/untitled.mtl</file>
+        <file>model/cube/untitled.obj</file>
+        <file>model/Crate/brick _normal.jpg</file>
+        <file>model/Crate/brick.jpg</file>
+        <file>model/Crate/Crate.mtl</file>
+        <file>model/Crate/Crate.obj</file>
+        <file>model/my_cub/brick _normal.jpg</file>
+        <file>model/my_cub/brick.jpg</file>
+        <file>model/my_cub/initCube.mtl</file>
+        <file>model/my_cub/initCube.obj</file>
+    </qresource>
+</RCC>

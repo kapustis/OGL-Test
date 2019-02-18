@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\widget.o
+./debug\simpleobject3d.o
+./debug\group3d.o
+./debug\camera3d.o
+./debug\skybox.o
+./debug\material.o
+./debug\materiallibrary.o
+./debug\objectengine3d.o
+./debug\qrc_shaders.o
+./debug\qrc_textures.o
+./debug\qrc_model.o
+./debug\moc_widget.o
+);

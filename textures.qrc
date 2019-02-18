@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cube.jpg</file>
+        <file>brick.jpg</file>
+        <file>skyboxtexture/MCcvD48.png</file>
+        <file>skyboxtexture/skybox_texture.png</file>
+        <file>354-normal.jpg</file>
+    </qresource>
+</RCC>

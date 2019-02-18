@@ -1,0 +1,68 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl 04feed3a_dds
+Ns 9.803922
+Ka 0.700000 0.700000 0.700000
+Kd 0.700000 0.700000 0.700000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures\texture_0016.dds
+map_Ka textures\\texture_0016.dds
+#map_Bump textures\\texture_0018.dds
+
+newmtl 10e660d9_dds
+Ns 9.803922
+Ka 0.700000 0.700000 0.700000
+Kd 0.700000 0.700000 0.700000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures\texture_0025.dds
+map_Ka textures\\texture_0025.dds
+map_d textures\\texture_0025.dds
+
+newmtl 345b3988_dds
+Ns 9.803922
+Ka 0.700000 0.700000 0.700000
+Kd 0.700000 0.700000 0.700000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures\texture_0019.dds
+map_Ka textures\\texture_0019.dds
+#map_Bump textures\\texture_0021.dds
+
+newmtl 726fa1a1_dds
+Ns 9.803922
+Ka 0.700000 0.700000 0.700000
+Kd 0.700000 0.700000 0.700000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures\texture_0022.dds
+map_Ka textures\\texture_0022.dds
+#map_Bump textures\\texture_0024.dds
+
+newmtl f4907756_dds
+Ns 9.803922
+Ka 0.700000 0.700000 0.700000
+Kd 0.700000 0.700000 0.700000
+Ks 1.000000 1.000000 1.000000
+#Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures\texture_0012.dds
+map_Ka textures\\texture_0012.dds
+#map_Bump textures\\texture_0014.dds
