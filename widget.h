@@ -7,9 +7,6 @@
 #include <QOpenGLTexture>
 #include <QOpenGLBuffer>
 #include <QBasicTimer>
-//#include <QGLFunctions>
-
-//#include <QVector3D>
 
 class ObjectEngine3D;
 class Transformational;
@@ -17,8 +14,9 @@ class Group3D;
 class Camera3D;
 class SkyBox;
 class QOpenGLFramebufferObject;
+class Light;
 
-class Widget : public QOpenGLWidget/*, protected QOpenGLFunctions*/{
+class Widget : public QOpenGLWidget{
     Q_OBJECT
 
 public:
@@ -43,11 +41,6 @@ protected:
 private:
     QMatrix4x4 m_projectionMatrix;
     QMatrix4x4 m_projectionLightMatrix;
-    QMatrix4x4 m_lightMatrix;
-    QMatrix4x4 m_shadowLightMatrix;
-
-    float m_lightRotateX;
-    float m_lightRotateY;
 
     QOpenGLShaderProgram m_program;
     QOpenGLShaderProgram m_programSkyBox;
@@ -72,6 +65,8 @@ private:
     qint32 m_fbHeight;
     qint32 m_fbWidth;
     float sizeShadow = 9216.0;
+
+    Light *m_light0[3];
 };
 
 #endif // WIDGET_H

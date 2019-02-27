@@ -10,6 +10,7 @@
 #include "camera3d.h"
 #include "skybox.h"
 #include "material.h"
+#include "light.h"
 
 
 Widget::Widget(QWidget *parent): QOpenGLWidget(parent){
@@ -20,17 +21,28 @@ Widget::Widget(QWidget *parent): QOpenGLWidget(parent){
     m_projectionLightMatrix.setToIdentity();
     m_projectionLightMatrix.ortho(-40.0, 40.0, -40.0, 40.0, -40.0, 40.0);
 
-    m_lightRotateX = 30.0;
-    m_lightRotateY = 40.0;
+    angleObject = 0.0f;
+    angleGroup1 = 0.0f;
+    angleGroup2 = 0.0f;
+    angleMain   = 0.0f;
 
-    m_shadowLightMatrix.setToIdentity();
-    m_shadowLightMatrix.rotate(m_lightRotateX,1.0,0.0,0.0);
-    m_shadowLightMatrix.rotate(m_lightRotateY,0.0,1.0,0.0);
+    m_light0[0] = new Light(Light::Spot);
+    m_light0[0]->setPosition(QVector4D(10.0f,10.0f,10.0f,1.0f));
+    m_light0[0]->setDirection(QVector4D(-1.0f,-1.0f,-1.0f,0.0f));
+    m_light0[0]->setDiffuseColor(QVector3D(1.0f,0.0f,0.0f));
+    m_light0[0]->setCutoff(10.0 / 180.0 * M_PI);
 
-    m_lightMatrix.setToIdentity();
-    m_lightMatrix.rotate(-m_lightRotateY,0.0,1.0,0.0);
-    m_lightMatrix.rotate(-m_lightRotateX,1.0,0.0,0.0);
+    m_light0[1] = new Light(Light::Spot);
+    m_light0[1]->setPosition(QVector4D(-10.0f,10.0f,10.0f,1.0f));
+    m_light0[1]->setDirection(QVector4D(1.0f,-1.0f,-1.0f,0.0f));
+    m_light0[1]->setDiffuseColor(QVector3D(0.0f,1.0f,0.0f));
+    m_light0[1]->setCutoff(12.0 / 180.0 * M_PI);
 
+    m_light0[2] = new Light(Light::Spot);
+    m_light0[2]->setPosition(QVector4D(10.0f,10.0f,-10.0f,1.0f));
+    m_light0[2]->setDirection(QVector4D(-1.0f,-1.0f,1.0f,0.0f));
+    m_light0[2]->setDiffuseColor(QVector3D(0.0f,0.0f,1.0f));
+    m_light0[2]->setCutoff(15.0 / 180.0 * M_PI);
 }
 
 Widget::~Widget(){
@@ -41,43 +53,43 @@ Widget::~Widget(){
 
 void Widget::initializeGL(){   
     glClearColor(0.0,0.0,0.0,1.0);
-    glMatrixMode(GL_PROJECTION);
-    glEnable(GL_CULL_FACE);
+    //    glMatrixMode(GL_PROJECTION);
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_ALPHA_TEST);
+    glEnable(GL_CULL_FACE);
+    //    glEnable(GL_ALPHA_TEST);
 
     initShaders();
 
-//    float step = 2.0f;
+    //    float step = 2.0f;
     QImage  DM(":/brick.jpg");
     QImage  NM(":/354-normal.jpg");
     float x = 0.0 , y = -1.0 ,z = 0.0;
     m_groups.append(new Group3D);
-//    for(float x = -step; x<= step; x += step){
-//        for(float y = -step; y <= step; y += step){
-//            for(float z = -step; z<= step; z +=step){
-//                initCube(1.0f,1.0f,1.0f,&DM,&NM);
-                m_objects.append(new ObjectEngine3D);
-                m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/car/carmini.obj");
-                m_objects[m_objects.size() - 1]->translate(QVector3D(x,y,z));
-                m_groups[m_groups.size() - 1]->addObject(m_objects[m_objects.size() - 1]);
-//            }
-//        }
-//    }
+    //    for(float x = -step; x<= step; x += step){
+    //        for(float y = -step; y <= step; y += step){
+    //            for(float z = -step; z<= step; z +=step){
+    //                initCube(1.0f,1.0f,1.0f,&DM,&NM);
+    m_objects.append(new ObjectEngine3D);
+    m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/cat/cat.obj");
+    m_objects[m_objects.size() - 1]->translate(QVector3D(x,y,z));
+    m_groups[m_groups.size() - 1]->addObject(m_objects[m_objects.size() - 1]);
+    //            }
+    //        }
+    //    }
     m_groups[0]->translate(QVector3D(-4.0f,0.0f,0.0f));
 
     m_groups.append(new Group3D);
-//    for(float x = -step; x<= step; x += step){
-//        for(float y = -step; y <= step; y += step){
-//            for(float z = -step; z<= step; z +=step){
-//               initCube(1.0f,1.0f,1.0f,&DM,&NM);
-                m_objects.append(new ObjectEngine3D);
-                m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/cube/untitled.obj");
-                m_objects[m_objects.size() - 1]->translate(QVector3D(x,y,z));
-                m_groups[m_groups.size() - 1]->addObject(m_objects[m_objects.size() - 1]);
-//            }
-//        }
-//    }
+    //    for(float x = -step; x<= step; x += step){
+    //        for(float y = -step; y <= step; y += step){
+    //            for(float z = -step; z<= step; z +=step){
+    //               initCube(1.0f,1.0f,1.0f,&DM,&NM);
+    m_objects.append(new ObjectEngine3D);
+    m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/cube/untitled.obj");
+    m_objects[m_objects.size() - 1]->translate(QVector3D(x,y,z));
+    m_groups[m_groups.size() - 1]->addObject(m_objects[m_objects.size() - 1]);
+    //            }
+    //        }
+    //    }
 
     m_groups[1]->translate(QVector3D(4.0f,0.0f,0.0f));
 
@@ -87,18 +99,18 @@ void Widget::initializeGL(){
 
     m_TransformObjects.append(m_groups[2]);
 
-    m_objects.append(new ObjectEngine3D);
-    m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/1984_Kenworth_K_100_Mark_Truck/untitled.obj");
+    //    m_objects.append(new ObjectEngine3D);
+    //    m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/1984_Kenworth_K_100_Mark_Truck/untitled.obj");
     //m_objects[m_objects.size() - 1]->loadObjectFromFile(":/model/my_cub/initCube.obj");
 
-    //initCube(2.0f,2.0f,2.0f,&DM,&NM);
+    initCube(2.0f,2.0f,2.0f,&DM,&NM);
     m_TransformObjects.append(m_objects[m_objects.size() - 1]);
-
+    /* "поверхность" */
     QImage tDM(":/cube.jpg");
     initCube(40.0f,2.0f,40.0f,&tDM);
     m_objects[m_objects.size() - 1]->translate(QVector3D(0.0,-2.0,0.0));
     m_TransformObjects.append(m_objects[m_objects.size() - 1]);
-
+    /* "поверхность" */
     m_groups[0]->addObject(m_camera);
     m_skybox = new SkyBox(100,QImage(":/skyboxtexture/skybox_texture.png"));
 
@@ -122,7 +134,7 @@ void Widget::paintGL(){
 
     m_programDepth.bind();
     m_programDepth.setUniformValue("u_projectionLightMatrix",m_projectionLightMatrix);
-    m_programDepth.setUniformValue("u_shadowLightMatrix",m_shadowLightMatrix);
+    m_programDepth.setUniformValue("u_shadowLightMatrix",m_light0[0]->getLightMatrix());
 
     for(int i = 0;i < m_TransformObjects.size();++i){
         m_TransformObjects[i]->draw(&m_programDepth,context()->functions());
@@ -151,11 +163,20 @@ void Widget::paintGL(){
     m_program.setUniformValue("u_shadowMap",GL_TEXTURE4 - GL_TEXTURE0);
     m_program.setUniformValue("u_sizeShadow",sizeShadow);
     m_program.setUniformValue("u_projectionMatrix",m_projectionMatrix);
-    m_program.setUniformValue("u_lightDirection",QVector4D(0.0,0.0,-1.0,0.0));
     m_program.setUniformValue("u_projectionLightMatrix",m_projectionLightMatrix);
-    m_program.setUniformValue("u_shadowLightMatrix",m_shadowLightMatrix);
-    m_program.setUniformValue("u_lightMatrix",m_lightMatrix);
+    m_program.setUniformValue("u_shadowLightMatrix",m_light0[0]->getLightMatrix());
     m_program.setUniformValue("u_lightPower", 2.0f);
+    for(int i = 0; i < 3; ++i){
+        m_program.setUniformValue(QString("u_lightProperty[%1].ambienceColor").arg(i).toLatin1().data(),  m_light0[i]->getAmbienseColor());
+        m_program.setUniformValue(QString("u_lightProperty[%1].diffuseColor").arg(i).toLatin1().data(),   m_light0[i]->getDiffuseColor());
+        m_program.setUniformValue(QString("u_lightProperty[%1].specularColor").arg(i).toLatin1().data(),  m_light0[i]->getSpecularColor());
+        m_program.setUniformValue(QString("u_lightProperty[%1].position").arg(i).toLatin1().data(),       m_light0[i]->getPosition());
+        m_program.setUniformValue(QString("u_lightProperty[%1].direction").arg(i).toLatin1().data(),      m_light0[i]->getDirection());
+        m_program.setUniformValue(QString("u_lightProperty[%1].cutoff").arg(i).toLatin1().data(),         m_light0[i]->getCutoff());
+        m_program.setUniformValue(QString("u_lightProperty[%1].type").arg(i).toLatin1().data(),           m_light0[i]->getType());
+    }
+    m_program.setUniformValue("u_countLights",3);
+    m_program.setUniformValue("u_indexLightForShadow",0);
 
     m_camera->draw(&m_program);
 
@@ -178,22 +199,21 @@ void Widget::mouseMoveEvent(QMouseEvent *event){
     QVector2D diff = QVector2D(event->localPos()) - m_mousePosition;
     m_mousePosition = QVector2D(event->localPos());
 
-    float angle = diff.length()/2.0;
-
-    QVector3D axis = QVector3D(diff.y(),diff.x(),0.0);
-
-    m_camera->rotate(QQuaternion::fromAxisAndAngle(axis,angle));
+    float angleX = diff.y() /2.0f;
+    float angleY = diff.x() /2.0f;
+    m_camera->rotateX(QQuaternion::fromAxisAndAngle(1.0f,0.0f,0.0f,angleX));
+    m_camera->rotateY(QQuaternion::fromAxisAndAngle(0.0f,1.0f,0.0f,angleY));
 
     update();
 }
 /* переключение камеры между групами и обьектами */
 void Widget::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_R || event->key() == 1050){
-     if(m_timer.isActive()){
-         m_timer.stop();
-     }else{
-         m_timer.start(30,this);
-     }
+        if(m_timer.isActive()){
+            m_timer.stop();
+        }else{
+            m_timer.start(30,this);
+        }
     }
 
     switch (event->key()) {

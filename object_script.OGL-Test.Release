@@ -8,6 +8,7 @@ INPUT(
 ./release\material.o
 ./release\materiallibrary.o
 ./release\objectengine3d.o
+./release\light.o
 ./release\qrc_shaders.o
 ./release\qrc_textures.o
 ./release\qrc_model.o

@@ -8,6 +8,7 @@ INPUT(
 ./debug\material.o
 ./debug\materiallibrary.o
 ./debug\objectengine3d.o
+./debug\light.o
 ./debug\qrc_shaders.o
 ./debug\qrc_textures.o
 ./debug\qrc_model.o

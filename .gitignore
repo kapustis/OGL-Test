@@ -1,2 +1,4 @@
 
 /debug/*
+.qmake.stash
+debug/OGL-Test.exe

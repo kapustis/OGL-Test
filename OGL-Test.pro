@@ -33,6 +33,7 @@ SOURCES += main.cpp\
         material.cpp \
         materiallibrary.cpp \
         objectengine3d.cpp \
+    light.cpp
 
 
 HEADERS  += widget.h \
@@ -44,6 +45,7 @@ HEADERS  += widget.h \
         material.h \
         materiallibrary.h \
         objectengine3d.h \
+    light.h
 
 DISTFILES +=
 
