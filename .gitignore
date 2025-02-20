@@ -2,3 +2,4 @@
 /debug/*
 .qmake.stash
 debug/OGL-Test.exe
+/OS_WIN_x64/*
